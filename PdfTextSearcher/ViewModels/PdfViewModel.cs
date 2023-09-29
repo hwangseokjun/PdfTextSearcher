@@ -11,6 +11,7 @@ namespace PdfTextSearcher.ViewModels
 {
     public class PdfViewModel : ViewModelBase, IDisposable
     {
+        private readonly ITextReader _textReader;
         private readonly Mediator _mediator;
         private string _fileName;
         private string _filePath;
@@ -61,6 +62,7 @@ namespace PdfTextSearcher.ViewModels
 
         public PdfViewModel(Mediator mediator)
         {
+            // _textReader = new TextReader(renderer);
             _mediator = mediator;
             ZoomInCommand = new RelayCommand(ExecuteZoomIn, CanExecuteZoomIn);
             ZoomOutCommand = new RelayCommand(ExecuteZoomOut, CanExecuteZoomOut);
@@ -112,14 +114,15 @@ namespace PdfTextSearcher.ViewModels
             return true;
         }
 
-        private void MovePage(PageMoveLocation obj)
+        private void MovePage(MoveLocation obj)
         {
             throw new NotImplementedException();
         }
 
         private void SearchText(string keyword)
         {
-            SearchResultViewModel.SearchResults.SearchText(keyword);
+            //SearchResultViewModel.SearchResults.SearchText(keyword);
+            throw new NotImplementedException();
         }
 
         private void OnDocumentSelectionChanged(object obj)
@@ -146,6 +149,7 @@ namespace PdfTextSearcher.ViewModels
             if (disposing)
             {
                 _mediator.OnPageMovableObjectClicked -= MovePage;
+                _mediator.OnKeywordSearchTriggered -= SearchText;
             }
 
             _isDisposed = true;

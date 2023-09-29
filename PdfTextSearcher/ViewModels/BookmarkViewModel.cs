@@ -39,7 +39,7 @@ namespace PdfTextSearcher.ViewModels
 
         private void ExecuteSelect(object parameter)
         {
-            var moveLocation = new PageMoveLocation(SelectedBookmark.PageNumber);
+            var moveLocation = new MoveLocation(SelectedBookmark.PageNumber);
             _mediator.NotifyPageMovableObjectClicked(moveLocation);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using PdfTextSearcher.Commands;
+using PdfTextSearcher.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,29 @@ namespace PdfTextSearcher.ViewModels
     {
         private readonly Mediator _mediator;
         private string _keyword;
+        private int _currentPage;
+        private int _zoomFactor;
+        private string _fileName;
 
         public string Keyword
         {
             get => _keyword;
             set => SetProperty(ref _keyword, value);
+        }
+        public string FileName
+        {
+            get => _fileName;
+            set => SetProperty(ref _fileName, value);
+        }
+        public int CurrentPage
+        {
+            get => _currentPage;
+            set => SetProperty(ref _currentPage, value);
+        }
+        public int ZoomFactor
+        {
+            get => _zoomFactor;
+            set => SetProperty(ref _zoomFactor, value);
         }
         public PersistTabViewModel PersistTabViewModel { get; set; }
 
@@ -28,11 +47,23 @@ namespace PdfTextSearcher.ViewModels
         public MainViewModel()
         {
             _mediator = new Mediator();
-            PersistTabViewModel
-                = new PersistTabViewModel();
+            _mediator.OnDocumentSelectionChanged += OnDocumentSelectionChanged;
+            PersistTabViewModel = new PersistTabViewModel();
             OpenCommand = new RelayCommand(ExecuteOpen);
             SearchCommand = new RelayCommand(ExecuteSearch, CanExecuteSearch);
             ExportToExcelCommand = new RelayCommand(ExecuteExportToExcel, CanExecuteExportToExcel);
+        }
+
+        private void OnDocumentSelectionChanged(object obj)
+        {
+            // 도큐먼트의 원래 상태로 작업창 되돌리기, 헷갈릴 수 있으므로 컨트롤 설계부터 시작하기
+            //if (obj is DocumentInformation info) 
+            //{
+            //    FileName = info.FileName;
+            //    CurrentPage = info.CurrentPage;
+            //    ZoomFactor = info.ZoomFactor;
+            //}
+            throw new NotImplementedException();
         }
 
         private void ExecuteOpen(object parameter)
@@ -40,6 +71,7 @@ namespace PdfTextSearcher.ViewModels
             var openFileDialog = new OpenFileDialog
             {
                 Filter = "PDF files (*.pdf)|*.pdf",
+                Title = "Open PDF File",
                 Multiselect = true,
             };
 

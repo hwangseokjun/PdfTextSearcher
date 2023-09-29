@@ -62,11 +62,14 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="Models\Bookmark.cs" />
-    <Compile Include="Models\PdfMoveLocation.cs" />
+    <Compile Include="Models\DocumentInformation.cs" />
+    <Compile Include="Models\ITextReader.cs" />
+    <Compile Include="Models\MoveLocation.cs" />
     <Compile Include="Models\RotateAngle.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SearchResultCollection.cs" />
     <Compile Include="Models\TextFragment.cs" />
+    <Compile Include="Models\TextReader.cs" />
     <Compile Include="Models\Thumbnail.cs" />
     <Compile Include="Utils\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BookmarkViewModel.cs" />
@@ -142,6 +145,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PdfTextSearcherControls\PdfTextSearcherControls.csproj">
+      <Project>{FB6C6759-E16F-4C75-91E2-83D02A632C39}</Project>
+      <Name>PdfTextSearcherControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

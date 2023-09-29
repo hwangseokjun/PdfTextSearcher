@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PdfTextSearcher.Models
 {
-    public class Thumbnail
+    public interface ITextReader
     {
-        public int PageNumber { get; set; }
+        List<TextFragment> GetAllTextFragments();
     }
 }

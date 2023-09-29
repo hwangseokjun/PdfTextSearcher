@@ -12,7 +12,7 @@ namespace PdfTextSearcher
         public event Action<string[]> OnDocumentLoaded;
         public event Action<object> OnDocumentSelectionChanged;
         public event Action<string> OnKeywordSearchTriggered;
-        public event Action<PageMoveLocation> OnPageMovableObjectClicked;
+        public event Action<MoveLocation> OnPageMovableObjectClicked;
 
         public void NotifyDocumentLoaded(string[] filePaths)
         {
@@ -29,9 +29,9 @@ namespace PdfTextSearcher
             OnKeywordSearchTriggered?.Invoke(keyword);
         }
 
-        public void NotifyPageMovableObjectClicked(PageMoveLocation pageMoveLocation)
+        public void NotifyPageMovableObjectClicked(MoveLocation moveLocation)
         {
-            OnPageMovableObjectClicked?.Invoke(pageMoveLocation);
+            OnPageMovableObjectClicked?.Invoke(moveLocation);
         }
     }
 }

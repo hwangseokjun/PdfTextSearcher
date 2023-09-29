@@ -41,7 +41,7 @@ namespace PdfTextSearcher.ViewModels
             int pageNumber = SelectedResult.Parent.PageNumber;
             int centerX = SelectedResult.CenterX;
             int centerY = SelectedResult.CenterY;
-            var moveLocation = new PageMoveLocation(pageNumber, centerX, centerY);
+            var moveLocation = new MoveLocation(pageNumber, centerX, centerY);
             _mediator.NotifyPageMovableObjectClicked(moveLocation);
         }
     }
