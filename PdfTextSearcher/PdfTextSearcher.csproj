@@ -65,7 +65,6 @@
     <Compile Include="Models\DocumentInformation.cs" />
     <Compile Include="Models\ITextReader.cs" />
     <Compile Include="Models\MoveLocation.cs" />
-    <Compile Include="Models\RotateAngle.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SearchResultCollection.cs" />
     <Compile Include="Models\TextFragment.cs" />
@@ -74,8 +73,10 @@
     <Compile Include="Utils\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BookmarkViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PdfTabViewModel.cs" />
     <Compile Include="ViewModels\PdfViewModel.cs" />
     <Compile Include="ViewModels\PersistTabViewModel.cs" />
+    <Compile Include="ViewModels\ProgressViewModel.cs" />
     <Compile Include="ViewModels\SearchResultViewModel.cs" />
     <Compile Include="ViewModels\ThumbnailsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -85,8 +86,14 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PdfTabView.xaml.cs">
+      <DependentUpon>PdfTabView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PdfView.xaml.cs">
       <DependentUpon>PdfView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressView.xaml.cs">
+      <DependentUpon>ProgressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchResultView.xaml.cs">
       <DependentUpon>SearchResultView.xaml</DependentUpon>
@@ -106,7 +113,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PdfTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PdfView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

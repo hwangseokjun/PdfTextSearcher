@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PdfTextSearcherControls.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,6 @@ namespace PdfTextSearcher.Models
         public int TotalPage { get; set; }
         public string FileName { get; set; }
         public int ZoomFactor { get; set; }
-        public RotateAngle RotateAngle { get; set; }
+        public PdfRotation Rotation { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using PdfTextSearcher.Commands;
 using PdfTextSearcher.Models;
+using PdfTextSearcherControls.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace PdfTextSearcher.ViewModels
         private double _zoomFactor;
         private int _totalPage;
         private int _currentPage;
-        private RotateAngle _rotateAngle;
+        private PdfRotation _rotation;
+        private PdfViewerPagesDisplayMode _displayMode;
         private bool _isDisposed;
 
         public string FileName
@@ -46,19 +48,22 @@ namespace PdfTextSearcher.ViewModels
             get => _currentPage;
             set => SetProperty(ref _currentPage, value);
         }
-        public RotateAngle RotateAngle
+        public PdfRotation Rotation
         {
-            get => _rotateAngle;
-            set => SetProperty(ref _rotateAngle, value);
+            get => _rotation;
+            set => SetProperty(ref _rotation, value);
+        }
+        public PdfViewerPagesDisplayMode DisplayMode
+        {
+            get => _displayMode;
+            set => SetProperty(ref _displayMode, value);
         }
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
         public ICommand RotateLeftCommand { get; private set; }
         public ICommand RotateRightCommand { get; private set; }
-        public ThumbnailsViewModel ThumbnailsViewModel { get; private set; }
-        public BookmarkViewModel BookmarkViewModel { get; private set; }
-        public SearchResultViewModel SearchResultViewModel { get; set; }
+        public ICommand SetDisplayModeCommand { get; private set; }
 
         public PdfViewModel(Mediator mediator)
         {
@@ -68,6 +73,7 @@ namespace PdfTextSearcher.ViewModels
             ZoomOutCommand = new RelayCommand(ExecuteZoomOut, CanExecuteZoomOut);
             RotateLeftCommand = new RelayCommand(ExecuteRotateLeft, CanExecuteRotateLeft);
             RotateRightCommand = new RelayCommand(ExecuteRotateRight, CanExecuteRotateRight);
+            SetDisplayModeCommand = new RelayCommand(ExecuteSetDisplayMode);
         }
 
         private void ExecuteZoomIn(object parameter)
@@ -112,6 +118,11 @@ namespace PdfTextSearcher.ViewModels
         {
             // 실행 가능한지 여부를 결정하는 로직을 구현합니다.
             return true;
+        }
+
+        private void ExecuteSetDisplayMode(object parameter)
+        {
+            throw new NotImplementedException();
         }
 
         private void MovePage(MoveLocation obj)

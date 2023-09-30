@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PdfTextSearcher.Models;
+using PdfTextSearcherControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
